@@ -7,7 +7,6 @@ import os
 import whisper
 import socket
 from datetime import datetime
-import re
 
 RECORD_SECONDS = 4
 CHUNK = 1024
@@ -16,9 +15,7 @@ CHANNELS = 1
 RATE = 44100
 OLLAMA_URL = "http://localhost:11434/api/generate"
 OLLAMA_MODEL = "llama2"
-
 SEARCH_API_URL = "https://api.duckduckgo.com/"
-SEARCH_ENABLED = True
 
 def check_internet_connection():
     try:
@@ -27,35 +24,37 @@ def check_internet_connection():
     except OSError:
         return False
 
-def needs_search(query):
-    search_indicators = [
-        # Time-related
-        r'\b(today|now|current|latest|recent)\b',
-        r'\b(weather|temperature)\b',
-        r'\b(news|headlines)\b',
-        r'\b(stock|price|market)\b',
-        r'\b(what time|what day|date)\b',
+def needs_web_search(prompt):
+    print("\n🤖 Thinking...")
+    search_check_prompt = f"""You are a search decision system. Analyze this user prompt and determine if it requires real-time web search for current/recent information that you cannot provide due to your knowledge cutoff.
 
-        # Real-time data
-        r'\b(happening now|breaking)\b',
-        r'\b(live|real[- ]?time)\b',
+User prompt: "{prompt}"
 
-        # Questions that typically need current data
-        r'\b(who is the (current|new))\b',
-        r'\b(what happened (today|yesterday|this week))\b',
-        r'\b(sports scores?|game results?)\b',
-        r'\b(exchange rate|currency)\b',
+Consider these factors:
+- Does it ask for current events, news, weather, stock prices, or real-time data?
+- Does it ask for recent information (today, this week, latest, current, now)?
+- Does it ask for live data like sports scores, market prices, weather or current conditions?
+- Does it contain words like "today", "now", "yesterday", "current", "latest", "recent", "breaking", or any word that suggests an element of futurity or present moment?
+- Does it require real-time information that you cannot provide unless you search the web?
 
-        # Specific current info requests
-        r'\b(search for|look up|find)\b',
-        r'\b(what\'s (new|happening))\b'
-    ]
+Answer with "False" if the prompt can be answered based on your existing knowledge. Answer with "True" ONLY if web search is needed. You must answer with either "True" or "False" and nothing else.
 
-    query_lower = query.lower()
-    for pattern in search_indicators:
-        if re.search(pattern, query_lower):
-            return True
-    return False
+Answer:"""
+
+    payload = {
+        "model": OLLAMA_MODEL,
+        "prompt": search_check_prompt,
+        "stream": False
+    }
+
+    try:
+        response = requests.post(OLLAMA_URL, json=payload, timeout=30)
+        response.raise_for_status()
+        result = response.json()
+        answer = result.get("response", "").strip().lower()
+        return "true" in answer
+    except:
+        return False
 
 def search_web(query):
     try:
@@ -69,75 +68,91 @@ def search_web(query):
 
         response = requests.get(SEARCH_API_URL, params=params, timeout=10)
         response.raise_for_status()
-
         data = response.json()
 
         results = []
 
         if data.get('Abstract'):
-            results.append(f"Summary: {data['Abstract']}")
-
+            results.append(data['Abstract'])
         if data.get('Answer'):
-            results.append(f"Direct answer: {data['Answer']}")
-
+            results.append(data['Answer'])
         if data.get('Definition'):
-            results.append(f"Definition: {data['Definition']}")
-
+            results.append(data['Definition'])
         if data.get('RelatedTopics'):
-            for topic in data['RelatedTopics'][:2]:  # Limit to 2
+            for topic in data['RelatedTopics'][:3]:
                 if isinstance(topic, dict) and topic.get('Text'):
-                    results.append(f"Related: {topic['Text']}")
+                    results.append(topic['Text'])
 
-        return results if results else ["No specific information found"]
+        return " ".join(results) if results else None
 
     except Exception as e:
-        return [f"Search error: {str(e)}"]
+        return None
 
-def get_current_datetime():
-    now = datetime.now()
-    return f"Current date and time: {now.strftime('%A, %B %d, %Y at %I:%M %p')}"
+def get_answer_with_search(prompt):
+    search_results = search_web(prompt)
+    if not search_results:
+        return get_direct_answer(prompt)
 
-def enhance_prompt_with_context(original_prompt):
-    enhanced_prompt = original_prompt
-    context_added = []
+    current_time = datetime.now().strftime('%A, %B %d, %Y at %I:%M %p')
 
-    if re.search(r'\b(time|date|day|today|now|yesterday|tomorrow|tonight|later|ago)\b', original_prompt.lower()):
-        datetime_info = get_current_datetime()
-        context_added.append(datetime_info)
+    answer_prompt = f"""Current date and time: {current_time}
 
-    if needs_search(original_prompt):
-        if check_internet_connection():
-            print("🔍 Searching the web...")
-            search_results = search_web(original_prompt)
+Search results: {search_results}
 
-            if search_results and not any("error" in result.lower() for result in search_results):
-                context_added.append("Recent search results:")
-                context_added.extend(search_results)
-            else:
-                context_added.append("Note: Search attempted but no reliable results found.")
-        else:
-            print("⚠️ Internet search needed but no connection available.")
-            context_added.append("Note: This query may benefit from current information, but internet is unavailable.")
+User question: {prompt}
 
-    if context_added:
-        context_section = "\n".join(context_added)
-        enhanced_prompt = f"""Context Information:
-{context_section}
+Provide a short, direct answer to the user's question using the search results and current time. Answer in the most concise way possible. No filler words, no sentence starters, no explanations. Just the essential answer. Only use the search results if they are relevant to the question. If the search results are not relevant, answer based on your existing knowledge. If you are unable to answer, say "I'm not sure.". Do not make up or fabricate information.
 
-User Question: {original_prompt}
+Examples:
+- If asked "What day is it today?" answer "It's Friday, the 31st of December, 2023"
+- If asked "What's the weather?" answer "It's currently sunny and 35°C"
+- If asked "What time is it?" answer "It's 3:45 PM"
 
-Please provide a super short and concise answer using the information above along with your knowledge. If the context does not help, answer based on your knowledge. Keep answers as short as possible."""
+Answer:"""
 
-    return enhanced_prompt
+    return query_ollama(answer_prompt)
+
+def get_direct_answer(prompt):
+    current_time = datetime.now().strftime('%A, %B %d, %Y at %I:%M %p')
+
+    answer_prompt = f"""Current date and time: {current_time}
+
+User question: {prompt}
+
+Provide a super short, direct answer. No filler words, no sentence starters, no explanations. Just the essential answer. If you are unable to answer, say "I'm not sure.". Do not make up or fabricate information.
+
+Examples:
+- If asked "What day is it today?" answer "It's Friday, the 31st of December, 2023"
+- If asked "What's the weather?" answer "It's currently sunny and 35°C"
+- If asked "What time is it?" answer "It's 3:45 PM"
+
+Answer:"""
+
+    return query_ollama(answer_prompt)
+
+def query_ollama(prompt):
+    payload = {
+        "model": OLLAMA_MODEL,
+        "prompt": prompt,
+        "stream": False
+    }
+
+    try:
+        response = requests.post(OLLAMA_URL, json=payload, timeout=60)
+        response.raise_for_status()
+        result = response.json()
+        return result.get("response", "No response received").strip()
+    except requests.exceptions.ConnectionError:
+        return "Error: Could not connect to Ollama."
+    except requests.exceptions.RequestException as e:
+        return f"Error: {e}"
+    except json.JSONDecodeError:
+        return "Error: Invalid response"
 
 def record_audio():
     print(f"\nSpeak now.")
     audio = pyaudio.PyAudio()
-    stream = audio.open(format=FORMAT,
-                       channels=CHANNELS,
-                       rate=RATE,
-                       input=True,
-                       frames_per_buffer=CHUNK)
+    stream = audio.open(format=FORMAT, channels=CHANNELS, rate=RATE, input=True, frames_per_buffer=CHUNK)
     frames = []
     for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
         data = stream.read(CHUNK)
@@ -160,26 +175,6 @@ def transcribe_audio_openai_whisper(audio_file):
     transcript = result["text"].strip()
     return transcript
 
-def query_local_llm(prompt):
-
-    payload = {
-        "model": OLLAMA_MODEL,
-        "prompt": prompt,
-        "stream": False
-    }
-
-    try:
-        response = requests.post(OLLAMA_URL, json=payload, timeout=60)
-        response.raise_for_status()
-        result = response.json()
-        return result.get("response", "No response received")
-    except requests.exceptions.ConnectionError:
-        return "Error: Could not connect to Ollama. Make sure Ollama is running locally."
-    except requests.exceptions.RequestException as e:
-        return f"Error communicating with LLM: {e}"
-    except json.JSONDecodeError:
-        return "Error: Invalid response from LLM"
-
 def main():
     print("--------------------------------")
     with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as temp_audio:
@@ -198,11 +193,16 @@ def main():
             print(f"Transcription failed: {transcript}")
             return
 
-        enhanced_prompt = enhance_prompt_with_context(transcript)
+        if needs_web_search(transcript):
+            if check_internet_connection():
+                print("\n🔍 Searching the web...")
+                answer = get_answer_with_search(transcript)
+            else:
+                answer = get_direct_answer(transcript)
+        else:
+            answer = get_direct_answer(transcript)
 
-        llm_response = query_local_llm(enhanced_prompt)
-
-        print(f"\n{llm_response}")
+        print(f"\n{answer}")
 
     except Exception as e:
         print(f"Error: {e}")
