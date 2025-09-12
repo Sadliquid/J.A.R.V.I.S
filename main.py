@@ -101,7 +101,7 @@ Search results: {search_results}
 
 User question: {prompt}
 
-Provide a short, direct answer to the user's question using the search results and current time. Answer in the most concise way possible. No filler words, no sentence starters, no explanations. Just the essential answer. Only use the search results if they are relevant to the question. If the search results are not relevant, answer based on your existing knowledge. If you are unable to answer, say "I'm not sure.". Do not make up or fabricate information.
+Provide a short answer to the user's question using the search results and current time. Answer in the most concise way possible. Only use the search results if they are relevant to the question. If the search results are not relevant, answer based on your existing knowledge. If you are unable to answer, say "I'm not sure.". Do not make up or fabricate information. You must use the following examples as a guide for how to respond.
 
 Examples:
 - If asked "What day is it today?" answer "It's Friday, the 31st of December, 2023"
@@ -119,7 +119,7 @@ def get_direct_answer(prompt):
 
 User question: {prompt}
 
-Provide a super short, direct answer. No filler words, no sentence starters, no explanations. Just the essential answer. If you are unable to answer, say "I'm not sure.". Do not make up or fabricate information.
+Provide a short answer to the user's question. Answer in the most concise way possible. If you are unable to answer, say "I'm not sure.". Do not make up or fabricate information. You must use the following examples as a guide for how to respond.
 
 Examples:
 - If asked "What day is it today?" answer "It's Friday, the 31st of December, 2023"
@@ -171,9 +171,15 @@ def save_audio(frames, filename):
 
 def transcribe_audio_openai_whisper(audio_file):
     model = whisper.load_model("base")
-    result = model.transcribe(audio_file, fp16=False)
+    result = model.transcribe(audio_file, fp16=False, language="en")
     transcript = result["text"].strip()
     return transcript
+
+def speak_text(text, voice="Daniel"):
+    try:
+        os.system(f'say -v "{voice}" "{text}"')
+    except Exception as e:
+        print(f"Error in text-to-speech: {e}")
 
 def main():
     print("--------------------------------")
@@ -203,6 +209,7 @@ def main():
             answer = get_direct_answer(transcript)
 
         print(f"\n{answer}")
+        speak_text(answer)
 
     except Exception as e:
         print(f"Error: {e}")
