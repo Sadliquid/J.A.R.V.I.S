@@ -16,6 +16,9 @@ RATE = 44100
 OLLAMA_URL = "http://localhost:11434/api/generate"
 OLLAMA_MODEL = "llama2"
 SEARCH_API_URL = "https://api.duckduckgo.com/"
+SERPAPI_KEY = os.environ.get("SERPAPI_KEY")
+SERPAPI_URL = "https://serpapi.com/search.json"
+MODE = os.environ.get("MODE")
 
 def check_internet_connection():
     try:
@@ -26,20 +29,18 @@ def check_internet_connection():
 
 def needs_web_search(prompt):
     print("\n🤖 Thinking...")
-    search_check_prompt = f"""You are a search decision system. Analyze this user prompt and determine if it requires real-time web search for current/recent information that you cannot provide due to your knowledge cutoff.
+    search_check_prompt = f"""
+        1.) You are a strict yes/no system.
 
-User prompt: "{prompt}"
+        2.) If the question is about current date or time, answer "False", and ignore points 3 and 4.
 
-Consider these factors:
-- Does it ask for current events, news, weather, stock prices, or real-time data?
-- Does it ask for recent information (today, this week, latest, current, now)?
-- Does it ask for live data like sports scores, market prices, weather or current conditions?
-- Does it contain words like "today", "now", "yesterday", "current", "latest", "recent", "breaking", or any word that suggests an element of futurity or present moment?
-- Does it require real-time information that you cannot provide unless you search the web?
+        3.) If the question can be answered with built-in knowledge, answer "False".
 
-Answer with "False" if the prompt can be answered based on your existing knowledge. Answer with "True" ONLY if web search is needed. You must answer with either "True" or "False" and nothing else.
+        4.) Only answer "True" if the question clearly requires current, real-time, or recent information, such as news, weather, recent events, or anything that cannot be answered with static knowledge.
 
-Answer:"""
+        Question: "{prompt}"
+        Answer:
+    """
 
     payload = {
         "model": OLLAMA_MODEL,
@@ -56,77 +57,153 @@ Answer:"""
     except:
         return False
 
-def search_web(query):
+def search_web_with_serp(query):
+    print("\n🔍 Searching the web with SerpAPI...")
     try:
         params = {
-            'q': query,
-            'format': 'json',
-            'no_redirect': '1',
-            'no_html': '1',
-            'skip_disambig': '1'
+            "q": query,
+            "api_key": SERPAPI_KEY
         }
+        response = requests.get(SERPAPI_URL, params=params, timeout=10)
+        response.raise_for_status()
+        data = response.json()
 
+        results = []
+
+        # Pull snippets from organic search results
+        for result in data.get("organic_results", [])[:3]:
+            if "snippet" in result:
+                results.append(result["snippet"])
+
+        # Save search results to file
+        if results:
+            save_search_results(query, results, data, engine="SerpAPI")
+
+        return " ".join(results) if results else None
+    except Exception as e:
+        return None
+
+def search_web_with_ddg(query):
+    print("\n🔍 Searching the web with DuckDuckGo...")
+    try:
+        params = {
+            "q": query,
+            "format": "json",
+            "no_redirect": 1,
+            "no_html": 1,
+            "skip_disambig": 1
+        }
         response = requests.get(SEARCH_API_URL, params=params, timeout=10)
         response.raise_for_status()
         data = response.json()
 
         results = []
 
-        if data.get('Abstract'):
-            results.append(data['Abstract'])
-        if data.get('Answer'):
-            results.append(data['Answer'])
-        if data.get('Definition'):
-            results.append(data['Definition'])
-        if data.get('RelatedTopics'):
-            for topic in data['RelatedTopics'][:3]:
-                if isinstance(topic, dict) and topic.get('Text'):
-                    results.append(topic['Text'])
+        # Pull snippets from related topics
+        for topic in data.get("RelatedTopics", [])[:3]:
+            if "Text" in topic:
+                results.append(topic["Text"])
+
+        # Save search results to file
+        if results:
+            save_search_results(query, results, data, engine="DuckDuckGo")
 
         return " ".join(results) if results else None
-
-    except Exception as e:
+    except Exception:
         return None
 
+def save_search_results(query, results, full_data, engine):
+    """Save search results to a text file with timestamp and query information."""
+    try:
+        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        filename = "search_results.txt"
+
+        with open(filename, "a", encoding="utf-8") as f:
+            f.write(f"\n{'='*60}\n")
+            f.write(f"Search Query: {query}\n")
+            f.write(f"Timestamp: {timestamp}\n")
+            f.write(f"Engine: {engine}\n")
+            f.write(f"{'='*60}\n")
+
+            # Write the search result snippets
+            for i, result in enumerate(results, 1):
+                f.write(f"\nResult {i}:\n{result}\n")
+
+            # Write additional details from full search data
+            organic_results = full_data.get("organic_results", [])[:3]
+            if organic_results:
+                f.write(f"\nDetailed Results:\n")
+                for i, result in enumerate(organic_results, 1):
+                    f.write(f"\n{i}. Title: {result.get('title', 'N/A')}\n")
+                    f.write(f"   URL: {result.get('link', 'N/A')}\n")
+                    f.write(f"   Snippet: {result.get('snippet', 'N/A')}\n")
+
+            f.write(f"\n{'='*60}\n")
+
+    except Exception as e:
+        print(f"Error saving search results: {e}")
+
 def get_answer_with_search(prompt):
-    search_results = search_web(prompt)
+    search_results = search_web_with_serp(prompt) if MODE == "Online" else search_web_with_ddg(prompt)
     if not search_results:
         return get_direct_answer(prompt)
 
-    current_time = datetime.now().strftime('%A, %B %d, %Y at %I:%M %p')
+    now = datetime.now()
+    current_date = now.strftime('%A, %B %d, %Y')
+    current_time = now.strftime('%I:%M %p')
 
-    answer_prompt = f"""Current date and time: {current_time}
+    answer_prompt = f"""
+        Today's date: {current_date}.
 
-Search results: {search_results}
+        Current time: {current_time}.
 
-User question: {prompt}
+        Relevant information: {search_results}
 
-Provide a short answer to the user's question using the search results and current time. Answer in the most concise way possible. Only use the search results if they are relevant to the question. If the search results are not relevant, answer based on your existing knowledge. If you are unable to answer, say "I'm not sure.". Do not make up or fabricate information. You must use the following examples as a guide for how to respond.
+        User question: {prompt}
 
-Examples:
-- If asked "What day is it today?" answer "It's Friday, the 31st of December, 2023"
-- If asked "What's the weather?" answer "It's currently sunny and 35°C"
-- If asked "What time is it?" answer "It's 3:45 PM"
+        Answer the question with ONLY the final response.
+        Always phrase the answer as a complete, natural sentence.
+        Do not just copy numbers or fragments from the information.
+        Do not include any preamble, explanations, or extra words.
+        Do not use phrases like "according to" or "based on".
+        Do not say things like "Sure," or "Here is my answer."
+        If you do not know how to answer, say "I'm not sure."
 
-Answer:"""
+        Examples (MUST FOLLOW):
+        - "What day is it today?" → "It's [DAY], the [DATE] of [MONTH], [YEAR]."
+        - "What time is it?" → "It's [TIME] [AM/PM]."
+
+        Answer:
+    """
 
     return query_ollama(answer_prompt)
 
 def get_direct_answer(prompt):
-    current_time = datetime.now().strftime('%A, %B %d, %Y at %I:%M %p')
+    now = datetime.now()
+    current_date = now.strftime('%A, %B %d, %Y')
+    current_time = now.strftime('%I:%M %p')
 
-    answer_prompt = f"""Current date and time: {current_time}
+    answer_prompt = f"""
+        Today's date: {current_date}.
 
-User question: {prompt}
+        Current time: {current_time}.
 
-Provide a short answer to the user's question. Answer in the most concise way possible. If you are unable to answer, say "I'm not sure.". Do not make up or fabricate information. You must use the following examples as a guide for how to respond.
+        User question: {prompt}
 
-Examples:
-- If asked "What day is it today?" answer "It's Friday, the 31st of December, 2023"
-- If asked "What's the weather?" answer "It's currently sunny and 35°C"
-- If asked "What time is it?" answer "It's 3:45 PM"
+        Always phrase the answer as a complete, natural sentence.
+        Do not include any preamble, explanations, or extra words.
+        Do not use phrases like "according to" or "based on".
+        Do not say things like "Sure," or "Here is my answer."
+        If you do not know how to answer, say "I'm not sure.".
+        Do not answer the question if it requires current, real-time, or recent information. Instead, say "I'm not sure.".
+        Respond exactly as in the examples below:
 
-Answer:"""
+        Examples (MUST FOLLOW):
+        - "What day is it today?" → "It's [DAY], the [DATE] of [MONTH], [YEAR]."
+        - "What time is it?" → "It's [TIME] [AM/PM]."
+
+        Answer:
+    """
 
     return query_ollama(answer_prompt)
 
@@ -201,7 +278,6 @@ def main():
 
         if needs_web_search(transcript):
             if check_internet_connection():
-                print("\n🔍 Searching the web...")
                 answer = get_answer_with_search(transcript)
             else:
                 answer = get_direct_answer(transcript)

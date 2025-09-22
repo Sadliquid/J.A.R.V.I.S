@@ -1,0 +1,374 @@
+
+============================================================
+Search Query: What is the weather like in Singapore today?
+Timestamp: 2025-09-21 23:14:16
+============================================================
+
+Result 1:
+Weather Today in Singapore, Singapore ; High / Low. 90°/80° ; Wind. 8 mph ; Humidity. 66% ; Dew Point. 75° ; Pressure. 29.89 in.
+
+Result 2:
+Hourly Weather · 1 AM 82°. rain drop 9% · 2 AM 81°. rain drop 9% · 3 AM 81°. rain drop 9% · 4 AM 81°. rain drop 7% · 5 AM 81°. rain drop 7% · 6 AM 78°. rain drop 11%.
+
+Result 3:
+A forecast of thundery showers indicates an imminent risk of lightning. Lightning typically strikes within 6km radius of a location, but is known to strike ...
+
+Detailed Results:
+
+1. Title: Weather Forecast and Conditions for Singapore ...
+   URL: https://weather.com/weather/today/l/bfbafb71cea3672231349f36b198478ecc3d5fd524d0918b8051ee838f743675
+   Snippet: Weather Today in Singapore, Singapore ; High / Low. 90°/80° ; Wind. 8 mph ; Humidity. 66% ; Dew Point. 75° ; Pressure. 29.89 in.
+
+2. Title: Singapore, Central Singapore, Singapore Weather Forecast
+   URL: https://www.accuweather.com/en/sg/singapore/300597/weather-forecast/300597
+   Snippet: Hourly Weather · 1 AM 82°. rain drop 9% · 2 AM 81°. rain drop 9% · 3 AM 81°. rain drop 9% · 4 AM 81°. rain drop 7% · 5 AM 81°. rain drop 7% · 6 AM 78°. rain drop 11%.
+
+3. Title: 24-hr Forecast - Weather Information Portal
+   URL: https://www.weather.gov.sg/weather-forecast-24hrforecast/
+   Snippet: A forecast of thundery showers indicates an imminent risk of lightning. Lightning typically strikes within 6km radius of a location, but is known to strike ...
+
+============================================================
+
+============================================================
+Search Query: What time is it?
+Timestamp: 2025-09-21 23:21:10
+Engine: SerpAPI
+============================================================
+
+Result 1:
+Time.is displays exact, official atomic clock time for any time zone (more than 7 million locations) in 58 languages. What time is it?
+
+Result 2:
+06:00:05 A.M.. Your clock is off by: +42156.574 s. Atlantic Standard Time. Puerto Rico / US Virgin Islands. AST (UTC-4).
+
+Result 3:
+Time Zone: EDT (Eastern Daylight Time) UTC/GMT -4 hours. Daylight Saving Time started on Sunday, March 9, 2025 at 2:00 am.
+
+Detailed Results:
+
+1. Title: Time.is - exact time, any time zone
+   URL: https://time.is/
+   Snippet: Time.is displays exact, official atomic clock time for any time zone (more than 7 million locations) in 58 languages. What time is it?
+
+2. Title: Time.gov
+   URL: https://www.time.gov/
+   Snippet: 06:00:05 A.M.. Your clock is off by: +42156.574 s. Atlantic Standard Time. Puerto Rico / US Virgin Islands. AST (UTC-4).
+
+3. Title: Current Local Time in New York, New York, USA
+   URL: https://www.timeanddate.com/worldclock/usa/new-york
+   Snippet: Time Zone: EDT (Eastern Daylight Time) UTC/GMT -4 hours. Daylight Saving Time started on Sunday, March 9, 2025 at 2:00 am.
+
+============================================================
+
+============================================================
+Search Query: What time is it?
+Timestamp: 2025-09-21 23:23:13
+Engine: SerpAPI
+============================================================
+
+Result 1:
+Time.is displays exact, official atomic clock time for any time zone (more than 7 million locations) in 58 languages. What time is it?
+
+Result 2:
+06:00:05 A.M.. Your clock is off by: +42156.574 s. Atlantic Standard Time. Puerto Rico / US Virgin Islands. AST (UTC-4).
+
+Result 3:
+Time Zone: EDT (Eastern Daylight Time) UTC/GMT -4 hours. Daylight Saving Time started on Sunday, March 9, 2025 at 2:00 am.
+
+Detailed Results:
+
+1. Title: Time.is - exact time, any time zone
+   URL: https://time.is/
+   Snippet: Time.is displays exact, official atomic clock time for any time zone (more than 7 million locations) in 58 languages. What time is it?
+
+2. Title: Time.gov
+   URL: https://www.time.gov/
+   Snippet: 06:00:05 A.M.. Your clock is off by: +42156.574 s. Atlantic Standard Time. Puerto Rico / US Virgin Islands. AST (UTC-4).
+
+3. Title: Current Local Time in New York, New York, USA
+   URL: https://www.timeanddate.com/worldclock/usa/new-york
+   Snippet: Time Zone: EDT (Eastern Daylight Time) UTC/GMT -4 hours. Daylight Saving Time started on Sunday, March 9, 2025 at 2:00 am.
+
+============================================================
+
+============================================================
+Search Query: What time is it?
+Timestamp: 2025-09-21 23:23:50
+Engine: SerpAPI
+============================================================
+
+Result 1:
+Time.is displays exact, official atomic clock time for any time zone (more than 7 million locations) in 58 languages. What time is it?
+
+Result 2:
+06:00:05 A.M.. Your clock is off by: +42156.574 s. Atlantic Standard Time. Puerto Rico / US Virgin Islands. AST (UTC-4).
+
+Result 3:
+Time Zone: EDT (Eastern Daylight Time) UTC/GMT -4 hours. Daylight Saving Time started on Sunday, March 9, 2025 at 2:00 am.
+
+Detailed Results:
+
+1. Title: Time.is - exact time, any time zone
+   URL: https://time.is/
+   Snippet: Time.is displays exact, official atomic clock time for any time zone (more than 7 million locations) in 58 languages. What time is it?
+
+2. Title: Time.gov
+   URL: https://www.time.gov/
+   Snippet: 06:00:05 A.M.. Your clock is off by: +42156.574 s. Atlantic Standard Time. Puerto Rico / US Virgin Islands. AST (UTC-4).
+
+3. Title: Current Local Time in New York, New York, USA
+   URL: https://www.timeanddate.com/worldclock/usa/new-york
+   Snippet: Time Zone: EDT (Eastern Daylight Time) UTC/GMT -4 hours. Daylight Saving Time started on Sunday, March 9, 2025 at 2:00 am.
+
+============================================================
+
+============================================================
+Search Query: What time is it?
+Timestamp: 2025-09-21 23:28:12
+Engine: SerpAPI
+============================================================
+
+Result 1:
+Time.is displays exact, official atomic clock time for any time zone (more than 7 million locations) in 58 languages. What time is it?
+
+Result 2:
+06:00:05 A.M.. Your clock is off by: +42156.574 s. Atlantic Standard Time. Puerto Rico / US Virgin Islands. AST (UTC-4).
+
+Result 3:
+Time Zone: EDT (Eastern Daylight Time) UTC/GMT -4 hours. Daylight Saving Time started on Sunday, March 9, 2025 at 2:00 am.
+
+Detailed Results:
+
+1. Title: Time.is - exact time, any time zone
+   URL: https://time.is/
+   Snippet: Time.is displays exact, official atomic clock time for any time zone (more than 7 million locations) in 58 languages. What time is it?
+
+2. Title: Time.gov
+   URL: https://www.time.gov/
+   Snippet: 06:00:05 A.M.. Your clock is off by: +42156.574 s. Atlantic Standard Time. Puerto Rico / US Virgin Islands. AST (UTC-4).
+
+3. Title: Current Local Time in New York, New York, USA
+   URL: https://www.timeanddate.com/worldclock/usa/new-york
+   Snippet: Time Zone: EDT (Eastern Daylight Time) UTC/GMT -4 hours. Daylight Saving Time started on Sunday, March 9, 2025 at 2:00 am.
+
+============================================================
+
+============================================================
+Search Query: What is the weather like today?
+Timestamp: 2025-09-21 23:32:51
+Engine: SerpAPI
+============================================================
+
+Result 1:
+Weather Today in Euclid, OH ; High / Low. 84°/64° ; Wind. 6 mph ; Humidity. 72% ; Dew Point. 55° ; Pressure. 30.11 in.
+
+Result 2:
+There is a marginal risk of severe weather today. Tonight. --/63°. 4%. Night. 63°. 4%. SSE 11 mph. Clear skies. Low 63F. Winds SSE at 10 to 15 mph.
+
+Result 3:
+Weather Today in Cleveland, OH ; High / Low. 84°/67° ; Wind. 13 mph ; Humidity. 74% ; Dew Point. 57° ; Pressure. 30.06 in.
+
+Detailed Results:
+
+1. Title: Weather Forecast and Conditions for Euclid, OH
+   URL: https://weather.com/weather/today/l/Euclid+OH?canonicalCityId=402e3c9734879d61f1e0cc26a1275177
+   Snippet: Weather Today in Euclid, OH ; High / Low. 84°/64° ; Wind. 6 mph ; Humidity. 72% ; Dew Point. 55° ; Pressure. 30.11 in.
+
+2. Title: 10-Day Weather Forecast for Euclid, OH
+   URL: https://weather.com/weather/tenday/l/Euclid+OH?canonicalCityId=402e3c9734879d61f1e0cc26a1275177
+   Snippet: There is a marginal risk of severe weather today. Tonight. --/63°. 4%. Night. 63°. 4%. SSE 11 mph. Clear skies. Low 63F. Winds SSE at 10 to 15 mph.
+
+3. Title: Weather Forecast and Conditions for Cleveland, OH
+   URL: https://weather.com/weather/today/l/Cleveland+OH?canonicalCityId=086d3034f18e99240df445a7c450c0ec
+   Snippet: Weather Today in Cleveland, OH ; High / Low. 84°/67° ; Wind. 13 mph ; Humidity. 74% ; Dew Point. 57° ; Pressure. 30.06 in.
+
+============================================================
+
+============================================================
+Search Query: What is the weather like in Singapore today?
+Timestamp: 2025-09-21 23:33:21
+Engine: SerpAPI
+============================================================
+
+Result 1:
+Weather Today in Singapore, Singapore ; High / Low. 90°/80° ; Wind. 8 mph ; Humidity. 66% ; Dew Point. 75° ; Pressure. 29.89 in.
+
+Result 2:
+Hourly Weather · 1 AM 82°. rain drop 9% · 2 AM 81°. rain drop 9% · 3 AM 81°. rain drop 9% · 4 AM 81°. rain drop 7% · 5 AM 81°. rain drop 7% · 6 AM 78°. rain drop 11%.
+
+Result 3:
+A forecast of thundery showers indicates an imminent risk of lightning. Lightning typically strikes within 6km radius of a location, but is known to strike ...
+
+Detailed Results:
+
+1. Title: Weather Forecast and Conditions for Singapore ...
+   URL: https://weather.com/weather/today/l/bfbafb71cea3672231349f36b198478ecc3d5fd524d0918b8051ee838f743675
+   Snippet: Weather Today in Singapore, Singapore ; High / Low. 90°/80° ; Wind. 8 mph ; Humidity. 66% ; Dew Point. 75° ; Pressure. 29.89 in.
+
+2. Title: Singapore, Central Singapore, Singapore Weather Forecast
+   URL: https://www.accuweather.com/en/sg/singapore/300597/weather-forecast/300597
+   Snippet: Hourly Weather · 1 AM 82°. rain drop 9% · 2 AM 81°. rain drop 9% · 3 AM 81°. rain drop 9% · 4 AM 81°. rain drop 7% · 5 AM 81°. rain drop 7% · 6 AM 78°. rain drop 11%.
+
+3. Title: 24-hr Forecast - Weather Information Portal
+   URL: https://www.weather.gov.sg/weather-forecast-24hrforecast/
+   Snippet: A forecast of thundery showers indicates an imminent risk of lightning. Lightning typically strikes within 6km radius of a location, but is known to strike ...
+
+============================================================
+
+============================================================
+Search Query: What is the weather like in Singapore today?
+Timestamp: 2025-09-21 23:38:13
+Engine: SerpAPI
+============================================================
+
+Result 1:
+Weather Today in Singapore, Singapore ; High / Low. 90°/80° ; Wind. 8 mph ; Humidity. 66% ; Dew Point. 75° ; Pressure. 29.89 in.
+
+Result 2:
+Hourly Weather · 1 AM 82°. rain drop 9% · 2 AM 81°. rain drop 9% · 3 AM 81°. rain drop 9% · 4 AM 81°. rain drop 7% · 5 AM 81°. rain drop 7% · 6 AM 78°. rain drop 11%.
+
+Result 3:
+A forecast of thundery showers indicates an imminent risk of lightning. Lightning typically strikes within 6km radius of a location, but is known to strike ...
+
+Detailed Results:
+
+1. Title: Weather Forecast and Conditions for Singapore ...
+   URL: https://weather.com/weather/today/l/bfbafb71cea3672231349f36b198478ecc3d5fd524d0918b8051ee838f743675
+   Snippet: Weather Today in Singapore, Singapore ; High / Low. 90°/80° ; Wind. 8 mph ; Humidity. 66% ; Dew Point. 75° ; Pressure. 29.89 in.
+
+2. Title: Singapore, Central Singapore, Singapore Weather Forecast
+   URL: https://www.accuweather.com/en/sg/singapore/300597/weather-forecast/300597
+   Snippet: Hourly Weather · 1 AM 82°. rain drop 9% · 2 AM 81°. rain drop 9% · 3 AM 81°. rain drop 9% · 4 AM 81°. rain drop 7% · 5 AM 81°. rain drop 7% · 6 AM 78°. rain drop 11%.
+
+3. Title: 24-hr Forecast - Weather Information Portal
+   URL: https://www.weather.gov.sg/weather-forecast-24hrforecast/
+   Snippet: A forecast of thundery showers indicates an imminent risk of lightning. Lightning typically strikes within 6km radius of a location, but is known to strike ...
+
+============================================================
+
+============================================================
+Search Query: What is the weather like in Singapore today?
+Timestamp: 2025-09-21 23:40:48
+Engine: SerpAPI
+============================================================
+
+Result 1:
+Weather Today in Singapore, Singapore ; High / Low. 90°/80° ; Wind. 8 mph ; Humidity. 66% ; Dew Point. 75° ; Pressure. 29.89 in.
+
+Result 2:
+Hourly Weather · 1 AM 82°. rain drop 9% · 2 AM 81°. rain drop 9% · 3 AM 81°. rain drop 9% · 4 AM 81°. rain drop 7% · 5 AM 81°. rain drop 7% · 6 AM 78°. rain drop 11%.
+
+Result 3:
+A forecast of thundery showers indicates an imminent risk of lightning. Lightning typically strikes within 6km radius of a location, but is known to strike ...
+
+Detailed Results:
+
+1. Title: Weather Forecast and Conditions for Singapore ...
+   URL: https://weather.com/weather/today/l/bfbafb71cea3672231349f36b198478ecc3d5fd524d0918b8051ee838f743675
+   Snippet: Weather Today in Singapore, Singapore ; High / Low. 90°/80° ; Wind. 8 mph ; Humidity. 66% ; Dew Point. 75° ; Pressure. 29.89 in.
+
+2. Title: Singapore, Central Singapore, Singapore Weather Forecast
+   URL: https://www.accuweather.com/en/sg/singapore/300597/weather-forecast/300597
+   Snippet: Hourly Weather · 1 AM 82°. rain drop 9% · 2 AM 81°. rain drop 9% · 3 AM 81°. rain drop 9% · 4 AM 81°. rain drop 7% · 5 AM 81°. rain drop 7% · 6 AM 78°. rain drop 11%.
+
+3. Title: 24-hr Forecast - Weather Information Portal
+   URL: https://www.weather.gov.sg/weather-forecast-24hrforecast/
+   Snippet: A forecast of thundery showers indicates an imminent risk of lightning. Lightning typically strikes within 6km radius of a location, but is known to strike ...
+
+============================================================
+
+============================================================
+Search Query: What's the weather in Singapore today?
+Timestamp: 2025-09-21 23:42:20
+Engine: SerpAPI
+============================================================
+
+Result 1:
+Weather Today in Singapore, Singapore ; High / Low. 90°/80° ; Wind. 8 mph ; Humidity. 66% ; Dew Point. 75° ; Pressure. 29.89 in.
+
+Result 2:
+Current Weather. 10:41 PM. 84°F. Mostly cloudy. RealFeel® 92° · Looking Ahead. A thunderstorm Monday morning. Singapore Weather Radar. Singapore Weather Radar.
+
+Result 3:
+SW 5 - 15 km/h. A forecast of thundery showers indicates an imminent risk of lightning.
+
+Detailed Results:
+
+1. Title: Weather Forecast and Conditions for Singapore ...
+   URL: https://weather.com/weather/today/l/bfbafb71cea3672231349f36b198478ecc3d5fd524d0918b8051ee838f743675
+   Snippet: Weather Today in Singapore, Singapore ; High / Low. 90°/80° ; Wind. 8 mph ; Humidity. 66% ; Dew Point. 75° ; Pressure. 29.89 in.
+
+2. Title: Singapore, Central Singapore, Singapore Weather Forecast
+   URL: https://www.accuweather.com/en/sg/singapore/300597/weather-forecast/300597
+   Snippet: Current Weather. 10:41 PM. 84°F. Mostly cloudy. RealFeel® 92° · Looking Ahead. A thunderstorm Monday morning. Singapore Weather Radar. Singapore Weather Radar.
+
+3. Title: 24-hr Forecast - Weather Information Portal
+   URL: https://www.weather.gov.sg/weather-forecast-24hrforecast/
+   Snippet: SW 5 - 15 km/h. A forecast of thundery showers indicates an imminent risk of lightning.
+
+============================================================
+
+============================================================
+Search Query: What time is it?
+Timestamp: 2025-09-21 23:43:32
+Engine: SerpAPI
+============================================================
+
+Result 1:
+Time.is displays exact, official atomic clock time for any time zone (more than 7 million locations) in 58 languages. What time is it?
+
+Result 2:
+06:00:05 A.M.. Your clock is off by: +42156.574 s. Atlantic Standard Time. Puerto Rico / US Virgin Islands. AST (UTC-4).
+
+Result 3:
+Time Zone: EDT (Eastern Daylight Time) UTC/GMT -4 hours. Daylight Saving Time started on Sunday, March 9, 2025 at 2:00 am.
+
+Detailed Results:
+
+1. Title: Time.is - exact time, any time zone
+   URL: https://time.is/
+   Snippet: Time.is displays exact, official atomic clock time for any time zone (more than 7 million locations) in 58 languages. What time is it?
+
+2. Title: Time.gov
+   URL: https://www.time.gov/
+   Snippet: 06:00:05 A.M.. Your clock is off by: +42156.574 s. Atlantic Standard Time. Puerto Rico / US Virgin Islands. AST (UTC-4).
+
+3. Title: Current Local Time in New York, New York, USA
+   URL: https://www.timeanddate.com/worldclock/usa/new-york
+   Snippet: Time Zone: EDT (Eastern Daylight Time) UTC/GMT -4 hours. Daylight Saving Time started on Sunday, March 9, 2025 at 2:00 am.
+
+============================================================
+
+============================================================
+Search Query: What time is it?
+Timestamp: 2025-09-21 23:44:03
+Engine: DuckDuckGo
+============================================================
+
+Result 1:
+What Time Is It? (album) What Time Is It? is a 1982 album by the Time.
+
+Result 2:
+"What Time Is It?" (song) "What Time Is It?" is the opening musical number and first single from the Disney Channel...
+
+Result 3:
+What Time Is It? (film) What time is it? is a 1989 Italian drama film directed by Ettore Scola.
+
+============================================================
+
+============================================================
+Search Query: What time is it?
+Timestamp: 2025-09-21 23:47:39
+Engine: DuckDuckGo
+============================================================
+
+Result 1:
+What Time Is It? (album) What Time Is It? is a 1982 album by the Time.
+
+Result 2:
+"What Time Is It?" (song) "What Time Is It?" is the opening musical number and first single from the Disney Channel...
+
+Result 3:
+What Time Is It? (film) What time is it? is a 1989 Italian drama film directed by Ettore Scola.
+
+============================================================
